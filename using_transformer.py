@@ -62,7 +62,7 @@ model = Model(inputs=inputs, outputs=output_layer)
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Train the model
-model.fit(predictors, label, epochs=500, verbose=1)
+model.fit(predictors, label, epochs=100, verbose=1)
 
 # Predict the next word
 def predict_next_word(text):
@@ -76,4 +76,4 @@ def predict_next_word(text):
     return ""
 
 # Test the prediction
-print(predict_next_word('data processing'))
+print(predict_next_word('improve'))

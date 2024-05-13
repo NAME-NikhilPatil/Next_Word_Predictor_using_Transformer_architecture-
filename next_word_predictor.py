@@ -33,6 +33,11 @@ for line in corpus:
         n_gram_sequence = token_list[:i + 1]
         input_sequences.append(n_gram_sequence)
 
+
+#A vector is like an arrow. It has two main features: how long it is and the direction 
+# it points in. Imagine you’re drawing a line from one point to another on a 
+# piece of paper. The line itself, including its length and the way it’s pointing, is like a vector.
+
 # Padding sequences
 max_sequence_len = max([len(x) for x in input_sequences])
 input_sequences = np.array(pad_sequences(input_sequences, maxlen=max_sequence_len, padding='pre'))
@@ -54,7 +59,11 @@ model.add(Dense(total_words, activation='softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Train the model
-model.fit(predictors, label, epochs=100, verbose=1)
+model.fit(predictors, label, epochs=300, verbose=1)
+# an epoch is a complete pass through all the training data in one cycle 
+# to train a machine learning model
+
+
 
 # 1)Input layer (Feeding the Sentence)
 # 2)Hidden layers (thinking process,probability of each word)
@@ -76,6 +85,10 @@ def predict_next_word(text):
         if index == predicted:
             return word
     return ""
+
+#Purpose of Softmax:
+#The softmax function transforms a vector of real numbers into a probability distribution.
+#It ensures that the output values are between 0 and 1 and sum up to 1, 
 
 # Test the prediction
 print(predict_next_word('improve'))
